@@ -25,7 +25,7 @@ const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const HTML_PATH = path.join(__dirname, 'index.html');
 function loadGame() {
   const html = fs.readFileSync(HTML_PATH, 'utf8');
-  let src = html.slice(html.indexOf('<script>') + 8, html.lastIndexOf('</script>'));
+  let src = html.slice(html.lastIndexOf('<script>') + 8, html.lastIndexOf('</script>'));   // последний <script> — сам движок игры (перед ним словарь языка)
   src = src.replace('\nshowStart();', '\nstartLab();').replace('requestAnimationFrame(loop);', '');
   const noop = () => {};
   const ctx = new Proxy({}, { get: (t, k) => k === 'createRadialGradient' || k === 'createLinearGradient' ? () => ({ addColorStop: noop }) : k === 'createImageData' ? (w, h) => ({ data: new Uint8ClampedArray(w * h * 4) }) : noop, set: () => true });
