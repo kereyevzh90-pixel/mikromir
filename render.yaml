@@ -1,0 +1,17 @@
+# Render.com: «New → Blueprint» → указать этот репозиторий → сервер поднимется сам.
+# Бесплатный тариф: сервер засыпает через 15 минут без игроков, первый вход после сна ждёт ~1 минуту.
+services:
+  - type: web
+    name: mikromir
+    runtime: node
+    plan: free
+    buildCommand: ""
+    startCommand: node server.js
+    envVars:
+      - key: BASE_URL
+        fromService:
+          type: web
+          name: mikromir
+          envVarKey: RENDER_EXTERNAL_URL
+      # Для входа через Google — добавить в настройках сервиса на Render:
+      # GOOGLE_CLIENT_ID и GOOGLE_CLIENT_SECRET

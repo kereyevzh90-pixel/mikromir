@@ -1,0 +1,41 @@
+{
+  "name": "mikromir",
+  "version": "0.1.0",
+  "description": "Микромир — симулятор бактерий (игра в разработке)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win portable"
+  },
+  "author": "",
+  "license": "MIT",
+  "build": {
+    "appId": "ru.mikromir.game",
+    "productName": "Микромир",
+    "files": [
+      "index.html",
+      "main.js",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "portable": {
+      "artifactName": "Mikromir-${version}.exe"
+    },
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "devDependencies": {
+    "electron-builder": "^26.15.3",
+    "electron": "^33.4.11"
+  }
+}
