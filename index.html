@@ -7337,7 +7337,7 @@ const surv = { t: 0, divisions: 0, pts: 0, wave: 0, player: null };
 const NETPORT = 43100;
 // Адрес сервера в интернете (server.js): комнаты, профили, Gmail-вход. Если игра открыта
 // с самого сервера (http/https) — берём его адрес; иначе — сохранённый или этот по умолчанию.
-const NET_SERVER_DEFAULT = '';   // пусто — общих серверов пока нет (игра не готова); впиши адрес, когда server.js будет размещён в интернете
+const NET_SERVER_DEFAULT = 'https://mikromir.onrender.com';   // пусто — общих серверов пока нет (игра не готова); впиши адрес, когда server.js будет размещён в интернете
 function netServerUrl() { try { if (location.protocol.startsWith('http')) return location.origin; return localStorage.getItem('bioServer') || NET_SERVER_DEFAULT; } catch (e) { return NET_SERVER_DEFAULT; } }
 const net = { role: null, nick: '', srv: null, sock: null, clients: [], myId: 0, buf: '', snapT: 0, known: new Map(), status: '', lastSnap: 0, server: false, room: null, token: '' };
 function nodeNet() { try { return (typeof require === 'function') ? require('net') : null; } catch (e) { return null; } }
