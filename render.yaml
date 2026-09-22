@@ -5,9 +5,11 @@ services:
     name: mikromir
     runtime: node
     plan: free
-    buildCommand: ""
-    startCommand: node server.js
+    buildCommand: echo "сборка не нужна — сервер без зависимостей"
     envVars:
+      - key: NODE_VERSION
+        value: "22"
+    startCommand: node server.js
       - key: BASE_URL
         fromService:
           type: web
